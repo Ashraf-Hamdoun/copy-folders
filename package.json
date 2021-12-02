@@ -1,0 +1,26 @@
+{
+  "name": "copy-folders",
+  "version": "1.0.0",
+  "description": "copy and paste all folders including their files",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ashraf-Hamdoun/copy-folders.git"
+  },
+  "keywords": [
+    "copy",
+    "paste",
+    "folder",
+    "copy-folders",
+    "paste-folders"
+  ],
+  "author": "Ashraf Hamdoun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ashraf-Hamdoun/copy-folders/issues"
+  },
+  "homepage": "https://github.com/Ashraf-Hamdoun/copy-folders#readme"
+}
