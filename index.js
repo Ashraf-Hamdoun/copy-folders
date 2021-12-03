@@ -2,8 +2,11 @@ const fs = require("fs");
 const path = require("path");
 
 const copyDir = (dirPath, targetPath) => {
+  // Target directory name
+  const targetDirName = targetPath.split("\\");
+
   // make the target directory
-  makeDir(targetPath);
+  makeDir(targetPath, targetDirName[targetDirName.length - 1]);
 
   // File or Folder
   const contents = readDir(dirPath);
@@ -11,7 +14,7 @@ const copyDir = (dirPath, targetPath) => {
   contents.forEach((content) => {
     const checkContent = content.split(".");
     if (checkContent[1]) {
-      copyFile(dirPath + "\\" + content, targetPath + "\\" + content);
+      copyFile(dirPath + "\\" + content, targetPath + "\\" + content, content);
     } else {
       copyDir(dirPath + "\\" + content, targetPath + "\\" + content);
     }
@@ -19,20 +22,28 @@ const copyDir = (dirPath, targetPath) => {
 };
 
 // Make a Directory
-const makeDir = (targetPath) => {
-  try {
-    fs.mkdirSync(targetPath);
-  } catch (error) {
-    console.log(error);
+const makeDir = (targetPath, content) => {
+  if (targetPath) {
+    console.log(content + " is already exists");
+  } else {
+    try {
+      fs.mkdirSync(targetPath);
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 
 // Copy files
-const copyFile = (dirPath, targetPath) => {
-  try {
-    fs.copyFileSync(dirPath, targetPath);
-  } catch (error) {
-    console.log(error);
+const copyFile = (dirPath, targetPath, content) => {
+  if (targetPath) {
+    console.log(content + " is already exists");
+  } else {
+    try {
+      fs.copyFileSync(dirPath, targetPath);
+    } catch (error) {
+      console.log(error);
+    }
   }
 };
 
