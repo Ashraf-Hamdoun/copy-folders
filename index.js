@@ -23,12 +23,12 @@ const copyDir = (dirPath, targetPath) => {
 
 // Make a Directory
 const makeDir = (targetPath, content) => {
-  if (targetPath) {
-    console.log(content + " is already exists");
-  } else {
-    try {
-      fs.mkdirSync(targetPath);
-    } catch (error) {
+  try {
+    fs.mkdirSync(targetPath);
+  } catch (error) {
+    if (error.code === "EEXIST") {
+      console.log(content + " is already exists");
+    } else {
       console.log(error);
     }
   }
@@ -36,12 +36,12 @@ const makeDir = (targetPath, content) => {
 
 // Copy files
 const copyFile = (dirPath, targetPath, content) => {
-  if (targetPath) {
-    console.log(content + " is already exists");
-  } else {
-    try {
-      fs.copyFileSync(dirPath, targetPath);
-    } catch (error) {
+  try {
+    fs.copyFileSync(dirPath, targetPath);
+  } catch (error) {
+    if (error.code === "EEXIST") {
+      console.log(content + " is already exists");
+    } else {
       console.log(error);
     }
   }
